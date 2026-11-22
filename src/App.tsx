@@ -5,6 +5,7 @@ import { CategoriesPage } from './pages/categories/categories-page';
 import { ProductsPage } from './pages/products/products-page';
 import { SpotsPage } from './pages/spots/spots-page';
 import { GuestChecksPage } from './pages/guest-checks/guest-checks-page';
+import { OrdersPage } from './pages/orders/orders-page';
 import { GuestCheckDetailPage } from './pages/guest-checks/guest-check-detail-page';
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
           <Route path="spots" element={<SpotsPage />} />
           <Route path="guest-checks" element={<GuestChecksPage />} />
           <Route path="guest-checks/:id" element={<GuestCheckDetailPage />} />
+          <Route path="orders" element={<OrdersPage />} />
         </Route>
       </Routes>
     </>

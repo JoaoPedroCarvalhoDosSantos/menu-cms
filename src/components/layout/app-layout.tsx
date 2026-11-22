@@ -6,6 +6,7 @@ const LINKS = [
   { to: '/products', label: 'Produtos' },
   { to: '/spots', label: 'Mesas' },
   { to: '/guest-checks', label: 'Comandas' },
+  { to: '/orders', label: 'Pedidos' },
 ];
 
 export function AppLayout() {

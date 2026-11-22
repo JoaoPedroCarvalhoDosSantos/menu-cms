@@ -22,11 +22,23 @@ export function useGuestCheckOrders(guestCheckId: string) {
   });
 }
 
+// Atualiza a tela na hora (otimista), grava na API e desfaz se der erro.
 export function useUpdateOrderStatus() {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: ({ id, status }: { id: string; status: OrderStatus }) =>
       OrderService.updateStatus(id, status),
-    onSuccess: () => queryClient.invalidateQueries({ queryKey: KEY }),
+    onMutate: async ({ id, status }) => {
+      await queryClient.cancelQueries({ queryKey: KEY });
+      const previous = queryClient.getQueryData<OrderDto[]>(KEY);
+      queryClient.setQueryData<OrderDto[]>(KEY, (old) =>
+        old?.map((order) => (order.id === id ? { ...order, status } : order)),
+      );
+      return { previous };
+    },
+    onError: (_error, _variables, context) => {
+      if (context?.previous) queryClient.setQueryData(KEY, context.previous);
+    },
+    onSettled: () => queryClient.invalidateQueries({ queryKey: KEY }),
   });
 }
