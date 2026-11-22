@@ -12,6 +12,7 @@ export const ProductService = {
   async listAll(categoryId?: string): Promise<ProductDto[]> {
     const result = await api.get<ProductDto[]>(ENDPOINT, {
       params: { categoryId, includeInactive: true },
+      
     });
     return result.data;
   },

@@ -10,6 +10,7 @@ export interface ProductDto {
   isNew: boolean;
   picture?: string | null;
   category: CategoryDto | null;
+  
 }
 
 export interface CreateProductDto {

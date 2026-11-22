@@ -51,6 +51,7 @@ export function ProductFormDialog({ product, onClose }: Props) {
   const [price, setPrice] = useState(product ? String(Number(product.price)) : '');
   const [picture, setPicture] = useState(product?.picture ?? '');
   const [categoryId, setCategoryId] = useState(product?.category?.id ?? '');
+  
   const [vegetarian, setVegetarian] = useState(product?.vegetarian ?? false);
   const [isNew, setIsNew] = useState(product?.isNew ?? false);
   const [active, setActive] = useState(product?.active ?? true);

@@ -10,6 +10,7 @@ import {
 } from '@/components/ui/dialog';
 import { getErrorMessage } from '@/lib/errors';
 import type { ProductDto } from '../dtos/product.dto';
+
 import { useDeleteProduct } from '../hooks/use-product';
 
 interface Props {

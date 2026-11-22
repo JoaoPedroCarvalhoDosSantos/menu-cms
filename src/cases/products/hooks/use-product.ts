@@ -8,6 +8,7 @@ export function useProducts(categoryId?: string) {
   return useQuery({
     queryKey: [...KEY, categoryId ?? 'all'],
     queryFn: () => ProductService.listAll(categoryId),
+    
   });
 }
 
